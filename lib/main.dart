@@ -4,7 +4,15 @@ void main() => runApp(MaterialApp(
   home: MlyCard(),
 ));
 
-class MlyCard extends StatelessWidget {
+class MlyCard extends StatefulWidget {
+  @override
+  _MlyCardState createState() => _MlyCardState();
+}
+
+class _MlyCardState extends State<MlyCard> {
+  int DevLevel = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,16 @@ class MlyCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor:Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            DevLevel++;
+
+          });
+        },
+        child:Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body:Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -49,7 +67,7 @@ class MlyCard extends StatelessWidget {
             ),
             SizedBox(height: 30.0),
             Text(
-              'Current Location',
+              'Dev Level',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
@@ -57,7 +75,7 @@ class MlyCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              'Unknown',
+              '$DevLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
@@ -85,7 +103,7 @@ class MlyCard extends StatelessWidget {
 
               ],
             ),
-            
+
             SizedBox(height: 60.0),
             Center(
               child: Column(
@@ -112,3 +130,4 @@ class MlyCard extends StatelessWidget {
     );
   }
 }
+
